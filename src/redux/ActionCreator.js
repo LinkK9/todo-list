@@ -68,6 +68,8 @@ export const AddNewTaskAsync = (inputValue) => async (dispatch, getState) => {
       type: BeginAddTodo,
     });
     await TodoService.AddTodo(inputValue);
+
+    // Json server da co san 'id' va overide lai nen phai get lai id cua task tao moi
     const data = await TodoService.GetTodoList();
     dispatch({
       type: AddTodoSuccess,
