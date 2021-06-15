@@ -16,6 +16,12 @@ const AddTodo = (inputValue) => {
   });
 };
 
+const EditTask = (id, value) => {
+  return axios.patch(apiEndPoint + `/todo/${id}`, {
+    taskName: value,
+  });
+};
+
 const ChooseFavorite = (id, value) => {
   return axios.patch(apiEndPoint + `/todo/${id}`, {
     isFavorite: value,
@@ -28,11 +34,17 @@ const ChangeStatusComplete = (id, value) => {
   });
 };
 
+const DeleteTask = (id) => {
+  return axios.delete(apiEndPoint + `/todo/${id}`);
+};
+
 const TodoService = {
   GetTodoList,
   AddTodo,
   ChooseFavorite,
   ChangeStatusComplete,
+  DeleteTask,
+  EditTask
 };
 
 export default TodoService;
