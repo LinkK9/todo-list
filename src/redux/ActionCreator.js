@@ -90,11 +90,11 @@ export const GetData = () => async (dispatch, getState) => {
 
     const data = await TodoService.GetTodoList();
 
-    console.log("data fetch ve:", data.data.data);
+    console.log("data fetch ve:", data.data);
     dispatch({
       type: GetTodoSuccess,
       payload: {
-        taskList: data.data.data,
+        taskList: data.data,
       },
     });
   } catch (err) {
