@@ -4,11 +4,11 @@ import AppHeader from "./AppHeader";
 import TaskInput from "./TaskInput";
 import TodoList from "./TodoList";
 import classes from "./Home.module.css";
-import { GetData } from "./redux/ActionCreator";
+import { ClearTask, GetData } from "./redux/ActionCreator";
 import { useEffect } from "react";
 
 export default function Home() {
-  const taskList = useSelector((store) => store.todoState.taskList);
+  let taskList = useSelector((store) => store.todoState.taskList);
 
   const partitions = _.partition(taskList, (task) => task.isCompleted);
 
@@ -30,6 +30,7 @@ export default function Home() {
 
   const dispatch = useDispatch();
   useEffect(() => {
+    dispatch(ClearTask());
     dispatch(GetData());
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);

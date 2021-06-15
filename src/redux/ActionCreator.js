@@ -10,6 +10,7 @@ import {
   AddTodoSuccess,
   SyncError,
   GetTodoSuccess,
+  ClearScreen
 } from "./ActionType";
 
 export const ChangeInputValue = (newInputValue) => {
@@ -67,10 +68,12 @@ export const AddNewTaskAsync = (inputValue) => async (dispatch, getState) => {
       type: BeginAddTodo,
     });
     await TodoService.AddTodo(inputValue);
+    const data = await TodoService.GetTodoList();
     dispatch({
       type: AddTodoSuccess,
       payload: {
         newTaskName: inputValue,
+        id: data.data[data.data.length - 1]['id']
       },
     });
   } catch (ex) {
@@ -139,3 +142,9 @@ export const ChangeStatusCompletedAsync = (id, value) => async (
     console.log(err);
   }
 };
+
+export const ClearTask = () => {
+  return {
+    type: ClearScreen
+  }
+}

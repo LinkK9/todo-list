@@ -22,7 +22,7 @@ function Login() {
       return;
     }
     dispatch(AttempLogin());
-    history.push("/home");
+    history.push("/");
   };
 
   return isLoggedIn ? (

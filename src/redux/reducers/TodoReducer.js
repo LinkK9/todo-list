@@ -6,8 +6,8 @@ import {
   AddTodoSuccess,
   SyncError,
   GetTodoSuccess,
+  ClearScreen,
 } from "../ActionType";
-import { v4 as uuidv4 } from "uuid";
 
 export const todo = (
   state = {
@@ -19,6 +19,12 @@ export const todo = (
   action
 ) => {
   switch (action.type) {
+    case ClearScreen: {
+      return {
+        ...state,
+        taskList: []
+      }
+    }
     case SyncError: {
       return {
         ...state,
@@ -43,7 +49,8 @@ export const todo = (
     }
     case AddTodoSuccess: {
       const newTask = {
-        id: uuidv4(),
+        // id: uuidv4(),
+        id: action.payload.id,
         taskName: action.payload.newTaskName,
         isCompleted: false,
         isFavorite: false,
