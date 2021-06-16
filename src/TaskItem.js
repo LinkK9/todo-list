@@ -1,39 +1,117 @@
-import React from "react";
-import { Checkbox } from "antd";
+import React, { useState } from "react";
+import { Checkbox, Modal, Input, Button } from "antd";
 import classes from "./TaskItem.module.css";
 import { AiFillStar } from "react-icons/ai";
+import { useDispatch } from "react-redux";
+import { DeleteTaskAsync, EditTaskAsync } from "./redux/ActionCreator";
+// import "antd/dist/antd.css";
+
+
+const {TextArea} = Input;
 
 function TaskItem({
   taskItem,
   onChooseFavoriteTask,
   onCompletionStageChanged,
 }) {
+  const dispatch = useDispatch();
+  const [editValue, setEditValue] = useState(taskItem.taskName);
+
   const handleChange = (e) => {
+    setIsModalVisible(false);
     onCompletionStageChanged(taskItem.id, !taskItem.isCompleted);
   };
 
   const handleFavStatus = (e) => {
+    e.stopPropagation();
     onChooseFavoriteTask(taskItem.id, !taskItem.isFavorite);
   };
 
-  return (
-    <div className={classes.todoContainer}>
-      <Checkbox
-        id={taskItem.id}
-        className={taskItem.isCompleted ? classes.completed : ""}
-        onChange={handleChange}
-        checked={taskItem.isCompleted}
-      >
-        {taskItem.taskName}
-      </Checkbox>
+  const [isModalVisible, setIsModalVisible] = useState(false);
+  const showModal = () => {
+    setIsModalVisible(true);
+  };
+  const handleCancel = () => {
+    setIsModalVisible(false);
+  };
 
-      {taskItem.isCompleted ? null : (
-        <AiFillStar
-          onClick={handleFavStatus}
-          style={{ color: taskItem.isFavorite ? "orange" : "gainsboro" }}
-        />
-      )}
-    </div>
+  // const handleOk = () => {
+  //   setIsModalVisible(false);
+  // };
+
+  const handleDeleteTask = () => {
+    dispatch(DeleteTaskAsync(taskItem.id));
+  };
+
+  const handleEditChange = (e) => {
+    setEditValue(e.target.value);
+  };
+
+  const handleEditSuccess = () => {
+    dispatch(EditTaskAsync(taskItem.id, editValue));
+    setIsModalVisible(false);
+  };
+
+  const starStyle = {
+    on: {
+      color: "orange",
+      float: "right",
+      position: "absolute",
+      top: "50%",
+      right: "10px",
+      transform: "translate(0, -50%)",
+    },
+    off: {
+      color: "gainsboro",
+      float: "right",
+      position: "absolute",
+      top: "50%",
+      right: "10px",
+      transform: "translate(0, -50%)",
+    },
+  };
+  return (
+    <>
+      <div onClick={showModal} className={classes.todoContainer}>
+        <Checkbox
+          id={taskItem.id}
+          className={
+            taskItem.isCompleted ? classes.completed : classes.notCompleted
+          }
+          onChange={handleChange}
+          checked={taskItem.isCompleted}
+        ></Checkbox>
+        <div style={{ display: "inline-block", margin: '0 20px'}}>
+          {taskItem.taskName}
+        </div>
+
+        {taskItem.isCompleted ? null : (
+          <AiFillStar
+            onClick={handleFavStatus}
+            style={taskItem.isFavorite ? starStyle.on : starStyle.off}
+          />
+        )}
+      </div>
+      <Modal
+        title="Edit Task"
+        visible={isModalVisible}
+        // onOk={handleOk}
+        onCancel={handleCancel}
+        footer={[
+          <Button type="primary" block danger onClick={handleDeleteTask}>
+            Delete Task
+          </Button>,
+        ]}
+      >
+        <TextArea
+          onChange={handleEditChange}
+          value={editValue}
+          onPressEnter={handleEditSuccess}
+          autoSize={ {minRows: 1, maxRows: 6} }
+          allowClear
+        ></TextArea>
+      </Modal>
+    </>
   );
 }
 

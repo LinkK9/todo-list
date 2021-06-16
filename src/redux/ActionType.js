@@ -10,3 +10,5 @@ export const AddTodoSuccess = "Add_Todo_Success";
 export const GetTodoSuccess = "Get_Todo_Success";
 export const SyncError = "Sync_Error";
 export const ClearScreen = "Clear_Screen";
+export const DeleteTask = "Delete_Task";
+export const EditTask= "Edit_Task";

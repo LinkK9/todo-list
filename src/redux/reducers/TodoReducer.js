@@ -7,6 +7,8 @@ import {
   SyncError,
   GetTodoSuccess,
   ClearScreen,
+  DeleteTask,
+  EditTask,
 } from "../ActionType";
 // import { v4 as uuidv4 } from "uuid";
 
@@ -20,11 +22,24 @@ export const todo = (
   action
 ) => {
   switch (action.type) {
+    case EditTask: {
+      const idIndex = state.taskList.findIndex(task => task.id === action.payload.id)
+      return{
+        ...state,
+        taskList: [...state.taskList.filter(val => val.id !== action.payload.id), {...state.taskList[idIndex], taskName: action.payload.value}]
+      }
+    }
+    case DeleteTask: {
+      return {
+        ...state,
+        taskList: [...state.taskList.filter(val => val.id !== action.payload.id)]
+      }
+    }
     case ClearScreen: {
       return {
         ...state,
-        taskList: []
-      }
+        taskList: [],
+      };
     }
     case SyncError: {
       return {
@@ -55,7 +70,7 @@ export const todo = (
         taskName: action.payload.newTaskName,
         isCompleted: false,
         isFavorite: false,
-        createdDate: new Date(),
+        createdDate: new Date().getTime(),
         completedDate: "",
       };
       return {

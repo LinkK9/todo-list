@@ -10,7 +10,9 @@ import {
   AddTodoSuccess,
   SyncError,
   GetTodoSuccess,
-  ClearScreen
+  ClearScreen,
+  DeleteTask,
+  EditTask
 } from "./ActionType";
 
 export const ChangeInputValue = (newInputValue) => {
@@ -148,5 +150,42 @@ export const ChangeStatusCompletedAsync = (id, value) => async (
 export const ClearTask = () => {
   return {
     type: ClearScreen
+  }
+}
+
+export const DeleteTaskAsync = (id) => async (
+  dispatch,
+  getState
+) => {
+  try {
+    await TodoService.DeleteTask(id);
+    dispatch({
+      type: DeleteTask,
+      payload: {
+        id
+      }
+    })
+  } catch(err) {
+    console.log(err)
+
+  }
+}
+
+export const EditTaskAsync = (id, value) => async (
+  dispatch,
+  getState
+) => {
+  try {
+    await TodoService.EditTask(id, value);
+    dispatch({
+      type: EditTask,
+      payload: {
+        id,
+        value
+      }
+    })
+  } catch(err) {
+    console.log(err)
+
   }
 }

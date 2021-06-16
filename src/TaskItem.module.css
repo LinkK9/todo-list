@@ -7,14 +7,42 @@
   padding: 8px;
   border: 1px solid lightgray;
   border-radius: 5px;
+  position: relative;
+  /* display: flex; */
+  /* justify-content: space-between; */
+  /* align-items: center; */
+}
+
+.flexCenter {
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
 
 .completed {
+  position: absolute;
+  top: 23%;
   text-decoration: line-through;
   color: rgb(128, 128, 128);
+}
+.notCompleted {
+  position: absolute;
+  top: calc(50% - 1px) ;
+  transform: translate(0, -50%);
+}
+
+.starOn {
+  position: absolute;
+  top: 50%;
+  color: orange;
+  float: right;
+}
+.starOff {
+  position: absolute;
+  top: 50%;
+  color: gainsboro;
+  float: right;
+  transform: translate(0, -50%);
 }
 .createdDate {
   color: orange;

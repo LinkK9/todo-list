@@ -12,7 +12,6 @@ import { Spin, Button } from "antd";
 
 function TodoList(props) {
   const taskList = props.taskList;
-
   const dispatch = useDispatch();
 
   const isLoading = useSelector((store) => store.todoState.isLoading);
