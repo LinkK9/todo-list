@@ -19,16 +19,20 @@
   align-items: center;
 }
 
-.completed {
+.tickBox {
   position: absolute;
-  top: 23%;
+  top: calc(50% - 1px) ;
+  transform: translate(0, -50%);
+}
+.completed {
+  display: inline-block;
+  margin: 0 20px;
   text-decoration: line-through;
   color: rgb(128, 128, 128);
 }
 .notCompleted {
-  position: absolute;
-  top: calc(50% - 1px) ;
-  transform: translate(0, -50%);
+  display: inline-block;
+  margin: 0 20px;
 }
 
 .starOn {

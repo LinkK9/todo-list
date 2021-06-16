@@ -20,8 +20,8 @@ const AppHeader = () => {
 
   return (
     <div className={classes.appHeader}>
-      <Title className={classes.header}>Todo app</Title>
-      <Button className={classes.btn} onClick={handleLogout}>
+      <Title className={classes.header}>Todo-List!</Title>
+      <Button danger className={classes.btn} onClick={handleLogout}>
         Logout
       </Button>
     </div>

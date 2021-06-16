@@ -3,6 +3,10 @@
   display: grid;
   padding: 16px;
 
+  margin: 0 auto;
+
+  max-width: 600px;
+
   grid-template-rows: auto auto 1fr;
 
   grid-gap: 8px;
@@ -21,4 +25,9 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
+}
+
+
+h1, h3 {
+  color: #1890ff !important;
 }

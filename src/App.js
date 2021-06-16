@@ -9,7 +9,6 @@ import {
   Redirect,
 } from "react-router-dom";
 import PrivateRoute from "./PrivateRoute";
-import AxiosPlayground from "./AxiosPlayground";
 import Home from "./Home";
 
 function App() {
@@ -22,9 +21,6 @@ function App() {
           </PrivateRoute>
           <Route path="/login">
             <Login />
-          </Route>
-          <Route path="/axiosplayground">
-            <AxiosPlayground />
           </Route>
           <Route exact path="/">
             <Redirect to="/home" />

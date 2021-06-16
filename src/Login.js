@@ -31,18 +31,21 @@ function Login() {
     <div>
       <Title>Login</Title>
       <Input
-        placeholder="User name"
+        placeholder="User name: Nhập tên bất kỳ"
         value={userName}
         onChange={(e) => setUserName(e.target.value)}
       />
       <Input
-        placeholder="password"
+        placeholder="password: Nhập bất kỳ"
         type="password"
         value={password}
         onChange={(e) => setPassword(e.target.value)}
       />
-
-      <Button onClick={handleLogIn}>Đăng nhập</Button>
+      <div style={{marginTop: 16}}>
+        <Button type="primary" onClick={handleLogIn}>
+          Đăng nhập
+        </Button>
+      </div>
     </div>
   );
 }

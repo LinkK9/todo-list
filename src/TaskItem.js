@@ -75,13 +75,15 @@ function TaskItem({
       <div onClick={showModal} className={classes.todoContainer}>
         <Checkbox
           id={taskItem.id}
-          className={
-            taskItem.isCompleted ? classes.completed : classes.notCompleted
-          }
+          className={classes.tickBox}
           onChange={handleChange}
           checked={taskItem.isCompleted}
         ></Checkbox>
-        <div style={{ display: "inline-block", margin: '0 20px'}}>
+        <div 
+          className={
+            taskItem.isCompleted ? classes.completed : classes.notCompleted
+          }
+        >
           {taskItem.taskName}
         </div>
 
