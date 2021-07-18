@@ -7,3 +7,10 @@
 .btn {
   margin-bottom: 8px;
 }
+
+.spiner {
+  margin: 20px 0;
+  margin-bottom: 20px;
+  padding: 30px 50px;
+  text-align: center;
+}

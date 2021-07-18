@@ -30,7 +30,9 @@ function TodoList(props) {
     <div>
       <Title level={3}>{props.title}</Title>
       {props.title === "Danh sách task" && isLoading && (
+        <div className={classes.spiner}>
         <Spin tip="Loading..."></Spin>
+        </div>
       )}
       {props.title === "Danh sách task" && isError && (
         <Button className={classes.btn} onClick={() => dispatch(GetData())}>
