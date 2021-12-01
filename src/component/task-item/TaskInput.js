@@ -1,7 +1,7 @@
 import { Input } from "antd";
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { ChangeInputValue, AddNewTaskAsync } from "./redux/ActionCreator";
+import { ChangeInputValue, AddNewTaskAsync } from "../../redux/ActionCreator";
 
 function TaskInput() {
   const dispatch = useDispatch();

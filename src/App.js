@@ -1,15 +1,15 @@
 import classes from "./App.module.css";
 import "antd/dist/antd.css";
 import React from "react";
-import Login from "./Login";
 import {
-  BrowserRouter as Router,
+  HashRouter as Router,
   Switch,
   Route,
   Redirect,
 } from "react-router-dom";
 import PrivateRoute from "./PrivateRoute";
-import Home from "./Home";
+import Home from "./component/home/Home";
+import Login from "./component/login/Login";
 
 function App() {
   return (
@@ -17,10 +17,10 @@ function App() {
       <Router>
         <Switch>
           <PrivateRoute path="/home">
-            <Home />
+            <Home/>
           </PrivateRoute>
           <Route path="/login">
-            <Login />
+            <Login/>
           </Route>
           <Route exact path="/">
             <Redirect to="/home" />

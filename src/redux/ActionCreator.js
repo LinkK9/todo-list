@@ -1,4 +1,4 @@
-import TodoService from "../TodoService";
+import TodoService from "../services/TodoService";
 import {
   ChangeInputValueType,
   GetTasksListValue,
@@ -97,7 +97,6 @@ export const GetData = () => async (dispatch, getState) => {
 
     const data = await TodoService.GetTodoList();
 
-    console.log("data fetch ve:", data.data);
     dispatch({
       type: GetTodoSuccess,
       payload: {

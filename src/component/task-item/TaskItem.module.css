@@ -8,9 +8,11 @@
   border: 1px solid lightgray;
   border-radius: 5px;
   position: relative;
-  /* display: flex; */
-  /* justify-content: space-between; */
-  /* align-items: center; */
+}
+
+.todoContainer:hover {
+  cursor: pointer;
+  background-color: aliceblue;
 }
 
 .flexCenter {

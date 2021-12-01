@@ -3,7 +3,7 @@ import { Input } from "antd";
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Redirect, useHistory } from "react-router-dom";
-import { AttempLogin } from "./redux/ActionCreator";
+import { AttempLogin } from "../../redux/ActionCreator";
 import { Button } from "antd";
 
 function Login() {

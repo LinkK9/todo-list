@@ -3,7 +3,7 @@ import { Checkbox, Modal, Input, Button } from "antd";
 import classes from "./TaskItem.module.css";
 import { AiFillStar } from "react-icons/ai";
 import { useDispatch } from "react-redux";
-import { DeleteTaskAsync, EditTaskAsync } from "./redux/ActionCreator";
+import { DeleteTaskAsync, EditTaskAsync } from "../../redux/ActionCreator";
 // import "antd/dist/antd.css";
 
 

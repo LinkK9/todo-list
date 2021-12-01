@@ -31,3 +31,9 @@
 h1, h3 {
   color: #1890ff !important;
 }
+
+h2 {
+  color: #1890ff !important;
+  margin-bottom: 0 !important;
+
+}

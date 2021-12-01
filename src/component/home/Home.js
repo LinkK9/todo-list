@@ -1,11 +1,11 @@
 import _ from "lodash";
 import { useDispatch, useSelector } from "react-redux";
-import AppHeader from "./AppHeader";
-import TaskInput from "./TaskInput";
-import TodoList from "./TodoList";
+import TaskInput from "../task-item/TaskInput";
+import TodoList from "../todo-list/TodoList";
 import classes from "./Home.module.css";
-import { ClearTask, GetData } from "./redux/ActionCreator";
+import { ClearTask, GetData } from "../../redux/ActionCreator";
 import { useEffect } from "react";
+import AppHeader from "../app-header/AppHeader";
 
 export default function Home() {
   let taskList = useSelector((store) => store.todoState.taskList);

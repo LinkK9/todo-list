@@ -4,9 +4,9 @@ import {
   ChangeStatusCompletedAsync,
   ChooseFavoriteTaskAsync,
   GetData,
-} from "./redux/ActionCreator";
+} from "../../redux/ActionCreator";
 
-import TaskItem from "./TaskItem";
+import TaskItem from "../task-item/TaskItem";
 import classes from "./TodoList.module.css";
 import { Spin, Button } from "antd";
 
@@ -30,9 +30,7 @@ function TodoList(props) {
     <div>
       <Title level={3}>{props.title}</Title>
       {props.title === "Danh sách task" && isLoading && (
-        <div className={classes.spiner}>
         <Spin tip="Loading..."></Spin>
-        </div>
       )}
       {props.title === "Danh sách task" && isError && (
         <Button className={classes.btn} onClick={() => dispatch(GetData())}>
