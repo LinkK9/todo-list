@@ -7,7 +7,7 @@ Chức năng:
  
 Công nghệ sử dụng: ReactJS, Redux. 
 
-Link demo: [https://linkk9.github.io/todo-list/](https://linkk9.github.io/todo-list/)
+Link demo: [https://linhtv29.github.io/todo-list/](https://linhtv29.github.io/todo-list/)
 
 ## Available Scripts
 
