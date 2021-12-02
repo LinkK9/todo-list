@@ -1,10 +1,9 @@
-import React, { useState } from "react";
+import React, { useRef, useState } from "react";
 import { Checkbox, Modal, Input, Button } from "antd";
 import classes from "./TaskItem.module.css";
 import { AiFillStar } from "react-icons/ai";
 import { useDispatch } from "react-redux";
 import { DeleteTaskAsync, EditTaskAsync } from "../../redux/ActionCreator";
-// import "antd/dist/antd.css";
 
 
 const {TextArea} = Input;
@@ -16,6 +15,8 @@ function TaskItem({
 }) {
   const dispatch = useDispatch();
   const [editValue, setEditValue] = useState(taskItem.taskName);
+
+  const inputRef = useRef(null);
 
   const handleChange = (e) => {
     setIsModalVisible(false);
@@ -30,14 +31,13 @@ function TaskItem({
   const [isModalVisible, setIsModalVisible] = useState(false);
   const showModal = () => {
     setIsModalVisible(true);
+    setTimeout(() => {
+    inputRef.current?.focus();
+    }, 10);
   };
   const handleCancel = () => {
     setIsModalVisible(false);
   };
-
-  // const handleOk = () => {
-  //   setIsModalVisible(false);
-  // };
 
   const handleDeleteTask = () => {
     dispatch(DeleteTaskAsync(taskItem.id));
@@ -70,6 +70,7 @@ function TaskItem({
       transform: "translate(0, -50%)",
     },
   };
+
   return (
     <>
       <div onClick={showModal} className={classes.todoContainer}>
@@ -106,6 +107,7 @@ function TaskItem({
         ]}
       >
         <TextArea
+          ref={inputRef}
           onChange={handleEditChange}
           value={editValue}
           onPressEnter={handleEditSuccess}

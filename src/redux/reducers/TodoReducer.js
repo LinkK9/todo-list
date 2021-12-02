@@ -90,7 +90,6 @@ export const todo = (
           ? { ...task, isCompleted: !task.isCompleted }
           : task
       );
-      console.log(newTaskList);
       return { ...state, taskList: newTaskList };
     }
     case ChooseFavoriteTaskValue: {
